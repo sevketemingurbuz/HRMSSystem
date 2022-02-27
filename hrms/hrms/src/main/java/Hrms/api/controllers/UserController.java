@@ -2,6 +2,7 @@ package Hrms.api.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,13 @@ public class UserController {
 	EmployersService employersService;
 	JobSeekerService jobSeekerService;
 	
+	@Autowired
+	public UserController(EmployersService employersService, JobSeekerService jobSeekerService) {
+		super();
+		this.employersService = employersService;
+		this.jobSeekerService = jobSeekerService;
+	}
+
 	public List<User> getEmployers(){
 		
 		return employersService.getAll();
